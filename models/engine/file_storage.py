@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''file storage engine for serialization and desialization of data'''
-from json import dump, load
+import json
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -30,9 +30,9 @@ class FileStorage:
         sets in __objects the obj with key <obj class name>.id
         '''
         obj_class_name = obj.__class__.__name__
-        obj_id = obj.id
+        key = "{}.{}".format(obj_cls_name, obj.id)
 
-        FileStorage.__objects[obj_class_name + '.' + obj_id] = obj
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """
