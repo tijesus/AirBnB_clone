@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''file storage engine for serialization and desialization of data'''
-
 from json import dump, load
 from models.base_model import BaseModel
 from models.user import User
@@ -16,7 +15,6 @@ class FileStorage:
     serializes instances to a JSON file and
     deserializes JSON file to instances
     '''
-
 
     __file_path = 'file.json'
     __objects = {}  # dictionary of insantiated objects
