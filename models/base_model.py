@@ -1,53 +1,49 @@
 #!/usr/bin/python3
-""" Defines all common attributes and methods for model classes """
+"""A BaseModel class that serves as the backbone to the AirBnB project"""
 
-from uuid import uuid4
+import uuid
 from datetime import datetime
 import models
 
 
-class BaseModel:
-    """ Method to save and convert to dictionary"""
+class BaseModel():
+    """BaseModel class initilization"""
 
     def __init__(self, *args, **kwargs):
-        """creating ID and datetime instances"""
-
-        format = "%Y-%m-%dT%H:%M:%S.%f"
+        """Initialize the instances creations"""
         if kwargs:
             for key, value in kwargs.items():
-                if key != '__class__':
-                    if key == 'created_at' or key == 'updated_at':
-                        try:
-                            time = datetime.strptime(value, format)
-                            setattr(self, key, time)
-                        except Exception as Exc:
-                            raise Exc(f"{value} is not in right {format}")
-                    else:
-                        setattr(self, key, value)
+                if key == "__class__":
+                    continue
+                setattr(self, key, value)
+            if "created_at" in kwargs:
+                c_a_str = kwargs['created_at']
+                formmatter = "%Y-%m-%dT%H:%M:%S.%f"
+                self.created_at = datetime.strptime(c_a_str, formmatter)
+            if "updated_at" in kwargs:
+                u_a_str = kwargs['updated_at']
+                formmatter = "%Y-%m-%dT%H:%M:%S.%f"
+                self.updated_at = datetime.strptime(u_a_str, formmatter)
         else:
-            self.id = str(uuid4())
+            self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)
+        models.storage.new(self)
 
     def save(self):
-        """Save instances"""
-
-        self.updated_at = datetime.now()
+        """Save object to file"""
+        self.created_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """convert to dictionary"""
-
-        instance_dict = self.__dict__.copy()
-        instance_dict.update({'__class__': self.__class__.__name__})
-        instance_dict['created_at'] = instance_dict['created_at'].isoformat()
-        instance_dict['updated_at'] = instance_dict['updated_at'].isoformat()
-        return instance_dict
+        """Returns a dictionary after saving the instance as a key"""
+        obj_dict = self.__dict__.copy()
+        obj_dict['__class__'] = self.__class__.__name__
+        obj_dict['created_at'] = self.created_at.isoformat()
+        obj_dict['updated_at'] = self.updated_at.isoformat()
+        return obj_dict
 
     def __str__(self):
-        """string representation"""
-
-        string__ = f'[{self.__class__.__name__}] ({self.id})' +\
-            f' {self.__dict__}'
-        return string__
+        """Return a string representation of this instance"""
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
