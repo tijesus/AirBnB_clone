@@ -10,7 +10,6 @@ import models
 
 
 class BaseModel:
-
     """
     Methods:
         save()
@@ -28,7 +27,6 @@ class BaseModel:
             updated_at: current datetime when an instance is created
             and it will be updated every time you change your object
         """
-
         format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for key, value in kwargs.items():
@@ -52,7 +50,6 @@ class BaseModel:
         Updates the public instance attribute updated_at
         and serialises it
         """
-
         self.updated_at = datetime.now()
         models.storage.save()
 
@@ -61,7 +58,6 @@ class BaseModel:
         returns a dictionary containing all
         keys/values of __dict__ of the instance
         """
-
         instance_dict = self.__dict__.copy()
         instance_dict.update({'__class__': self.__class__.__name__})
         instance_dict['created_at'] = instance_dict['created_at'].isoformat()
@@ -72,7 +68,6 @@ class BaseModel:
         '''
         string representatioon of a BaseModel
         '''
-
         string__ = f'[{self.__class__.__name__}] ({self.id})' +\
             f' {self.__dict__}'
         return string__
