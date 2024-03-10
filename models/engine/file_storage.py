@@ -30,7 +30,7 @@ class FileStorage:
         sets in __objects the obj with key <obj class name>.id
         '''
         obj_class_name = obj.__class__.__name__
-        key = "{}.{}".format(obj_cls_name, obj.id)
+        key = "{}.{}".format(obj_class_name, obj.id)
 
         FileStorage.__objects[key] = obj
 
