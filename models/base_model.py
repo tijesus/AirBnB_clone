@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-'''
-Defines all common attributes and methods for
-model classes
-'''
+""" Defines all common attributes and methods for model classes """
 
 from uuid import uuid4
 from datetime import datetime
@@ -10,23 +7,11 @@ import models
 
 
 class BaseModel:
-    """
-    Methods:
-        save()
-        to_dict()
-    """
+    """ Method to save and convert to dictionary"""
 
     def __init__(self, *args, **kwargs):
-        """
-        Creates an id for each BaseModel and keeps track of each time
-        a user is created and updated
+        """creating ID and datetime instances"""
 
-        Attrs:
-            id: uuid.uuid4 string
-            creates_at: current datetime when an instance is created
-            updated_at: current datetime when an instance is created
-            and it will be updated every time you change your object
-        """
         format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for key, value in kwargs.items():
@@ -46,18 +31,14 @@ class BaseModel:
             models.storage.new(self)
 
     def save(self):
-        """
-        Updates the public instance attribute updated_at
-        and serialises it
-        """
+        """Save instances"""
+
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """
-        returns a dictionary containing all
-        keys/values of __dict__ of the instance
-        """
+        """convert to dictionary"""
+
         instance_dict = self.__dict__.copy()
         instance_dict.update({'__class__': self.__class__.__name__})
         instance_dict['created_at'] = instance_dict['created_at'].isoformat()
@@ -65,9 +46,8 @@ class BaseModel:
         return instance_dict
 
     def __str__(self):
-        '''
-        string representatioon of a BaseModel
-        '''
+        """string representation"""
+
         string__ = f'[{self.__class__.__name__}] ({self.id})' +\
             f' {self.__dict__}'
         return string__
