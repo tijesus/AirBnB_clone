@@ -108,12 +108,6 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
             print(f"{instance.id}")
 
-    def help_create(self):
-        """
-        help message for the vreate command
-        """
-        print(" Creates a new instance of BaseModel and saves it")
-
     def do_show(self, line):
         """ Prints the string representation of an
         instance based on the class name and id"""
@@ -139,11 +133,6 @@ class HBNBCommand(cmd.Cmd):
             if not found_id:
                 print(self.__nonexistent_id_err_msg)
 
-    def help_show(self):
-        '''help message for the show command'''
-        print('Prints the string representation ', end='')
-        print('of an instance based on the class name and id')
-
     def do_destroy(self, line):
         '''deletes an instance'''
 
@@ -168,10 +157,6 @@ class HBNBCommand(cmd.Cmd):
             if not found_id:
                 print(self.__nonexistent_id_err_msg)
 
-    def help_destroy(self):
-        '''help message for the destroy command'''
-        print('Deletes an instance based on the class name and id')
-
     def do_all(self, line):
         '''Prints all string representation of all instances'''
         str_repr = []
@@ -190,12 +175,6 @@ class HBNBCommand(cmd.Cmd):
             print(str_repr)
         else:
             print(self.__nonexistent_class_err_msg)
-
-    def help_all(self):
-        '''help text for the all command'''
-        print('Prints all string representation of', end='')
-        print(' all instances based or not on the class name')
-        print('Ex: (hbnb) all BaseModel or $ all')
 
     def do_update(self, line):
         '''Updates an instance based on the class name and id'''
@@ -237,10 +216,6 @@ class HBNBCommand(cmd.Cmd):
 
             setattr(model_instance, arg3, arg4)
             storage.save()
-
-    def help_update(self):
-        '''help text for the update command'''
-        print("Updates an instance based on the class name and id")
 
 
 if __name__ == '__main__':
