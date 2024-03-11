@@ -1,13 +1,6 @@
 #!/usr/bin/python3
 '''file storage engine for serialization and desialization of data'''
 from json import dump, load
-from models.base_model import BaseModel
-from models.user import User
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
 
 
 class FileStorage:
@@ -53,7 +46,13 @@ class FileStorage:
         otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised)
         """
-
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+        from models.state import State
         try:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
                 json_object = load(f)
