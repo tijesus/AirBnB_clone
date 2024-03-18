@@ -1,0 +1,1 @@
+Creating a static web page for AirBnB
