@@ -51,6 +51,7 @@ class BaseModel:
         and serialises it
         """
         self.updated_at = datetime.now()
+
         models.storage.save()
 
     def to_dict(self):

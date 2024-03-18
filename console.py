@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         return model
 
     def do_EOF(self, line):
-        '''Quit command to exit the program'''
+        '''EOF command to exit the program'''
         print()
         return True
 
@@ -83,14 +83,6 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         pass
-
-    def help_EOF(self):
-        '''Help message for EOF command'''
-        print("Help command to exit the program\n")
-
-    def help_quit(self):
-        '''Help message for quit command'''
-        print("Quit command to exit the program\n")
 
     # Airbnb commands
 
