@@ -59,14 +59,90 @@ article {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.places article .amenities {
-    background-color: blue;
-} 
-/* .amenities li {
+.places .amenities,
+.places .reviews {
+    float: none;
+    font-size: 16px;
+    border-bottom: 1px solid #DDDDDD;
+    text-align: left;
+    width: 100%;
+}
+.places .amenities {
+    line-height: 2;
+}
+.places .amenities h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.places .reviews h2 {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+.places ul {
+    margin: 0;
+    padding: 0;
+}
+.places li{
+    list-style: none;
+    background-repeat: no-repeat;
+    /* line-height: 2; */
+}
+.places .amenities li {
+    padding-left: 40px;
+    margin-bottom: 10px;
+}
+
+.pet {
     background-image: url(../images/icon_pets.png);
+    background-position: left center;
+    background-size: 35px;
+}
+
+.tv {
+    background-image: url(../images/icon_tv.png);
+    background-position: left center;
+    background-size: 35px;
+}
+.wifi {
+    background-image: url(../images/icon_wifi.png);
+    background-position: left center;
+    background-size: 35px;
+}
+
+.places article .reviews h3 {
+    font-size: 14px;
+}
+
+.places article .reviews p {
+    font-size: 12px;
+    text-align: left;
+}
+
+
+
+/* .amenities,
+.reviews {
+    margin-top: 40px;
+}
+
+.amenities h2,
+.reviews h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.amenities ul,
+.reviews ul {
+    list-style: none;
+}
+
+.reviews h3 {
+    font-size: 14px;
+}
+
+.reviews p {
+    font-size: 12px;
 } */
-
-
 
 
 
