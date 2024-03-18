@@ -23,7 +23,8 @@ article {
     font-size: 30px;
     position: relative;
     float: right;
-    top: -72px; 
+    padding: 2px;
+    top: -75px; 
 }
 .information {
     height: 80px;
