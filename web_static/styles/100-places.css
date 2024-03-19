@@ -86,7 +86,6 @@ article {
 .places li{
     list-style: none;
     background-repeat: no-repeat;
-    /* line-height: 2; */
 }
 .places .amenities li {
     padding-left: 40px;
